@@ -10,30 +10,25 @@ def generate_task():
     arg1 = random.randint(0, 100)
     random.seed(datetime.datetime.now())
     arg2 = random.randint(0, 100)
-    operations_list = ['+', '-', '*']
-    random.seed(datetime.datetime.now())
-    operation = operations_list[random.randint(0, len(operations_list)-1)]
-    return arg1, arg2, operation
+    return arg1, arg2
 
 
-def calculate_task(arg1, arg2, operation):
-    result = ''
-    if operation == '+':
-        result = arg1 + arg2
-    if operation == '-':
-        result = arg1 - arg2
-    if operation == '*':
-        result = arg1 * arg2
-    return result
+def calculate_task(arg1, arg2):
+    while arg1 != 0 and arg2 != 0:
+        if arg1 > arg2:
+            arg1 = arg1 % arg2
+        else:
+            arg2 = arg2 % arg1
+    return arg1 + arg2
 
 
-def calc_game(name="Alex", total_questions=3):
-    print("What is the result of the expression?")
+def gcd_game(name="Alex", total_questions=3):
+    print("Find the greastest common divisor of given numbers.")
     win_condition = True
     for _ in range(total_questions):
-        game_arg1, game_arg2, game_oper = generate_task()
-        correct_answer = calculate_task(game_arg1, game_arg2, game_oper)
-        print("Question: {} {} {} = ".format(game_arg1, game_oper, game_arg2))
+        game_arg1, game_arg2 = generate_task()
+        correct_answer = calculate_task(game_arg1, game_arg2)
+        print("Question: {} {} = ".format(game_arg1, game_arg2))
         player_answer = prompt.string("Your answer: ")
         if int(player_answer) == correct_answer:
             print("Correct!")
@@ -52,7 +47,7 @@ def calc_game(name="Alex", total_questions=3):
 
 def main():
     name = cli.welcome_user()
-    calc_game(name)
+    gcd_game(name)
 
 
 if __name__ == "__main__":

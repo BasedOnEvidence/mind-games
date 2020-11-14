@@ -2,6 +2,7 @@
 import brain_games.cli as cli
 import brain_games.games.brain_even as brain_even
 import brain_games.games.brain_calc as brain_calc
+import brain_games.games.brain_gcd as brain_gcd
 import sys
 
 
@@ -17,6 +18,9 @@ def main():
     elif current_game == "--calc":
         name = cli.welcome_user()
         brain_calc.calc_game(name)
+    elif current_game == "--gcd":
+        name = cli.welcome_user()
+        brain_gcd.gcd_game(name)
     elif current_game == "--help":
         print("Here are all the arguments: ")
         print("--even - play even game")
