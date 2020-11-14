@@ -1,29 +1,23 @@
 #!/usr/bin/env python
 import brain_games.cli as cli
-import random
-import datetime
+import brain_games.calc_functions as calc_functions
 import prompt
 
 
 def even_game(name="Alex", total_questions=3):
     print("Answer \"yes\" if the number is even, otherwise anser \"no\".")
-    win_condition = True
     for _ in range(total_questions):
-        random.seed(datetime.datetime.now())
-        current_number = random.randint(0, 65535)
+        current_number = calc_functions.num_generator(0, 65535)
         print("Question: {}".format(current_number))
-        player_answer = prompt.string("Your answer: ")
-        if (((current_number % 2 == 0) and (player_answer == "yes")) or
-                ((current_number % 2 != 0) and (player_answer == "no"))):
-            print("Correct!")
+        if (current_number % 2 == 0):
+            correct_answer = "yes"
         else:
-            print("Incorrect!")
-            win_condition = False
+            correct_answer = "no"
+        player_answer = prompt.string("Your answer: ")
+        win_condition = cli.game_answer_check(player_answer, correct_answer)
+        if not win_condition:
             break
-    if win_condition:
-        print("Congratulations, {}!".format(name))
-    else:
-        print("Nice try, {}!".format(name))
+    cli.game_result(win_condition, name)
 
 
 def main():
