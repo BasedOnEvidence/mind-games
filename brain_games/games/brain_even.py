@@ -5,7 +5,7 @@ import datetime
 import prompt
 
 
-def even_game(name, total_questions=3):
+def even_game(name="Alex", total_questions=3):
     print("Answer \"yes\" if the number is even, otherwise anser \"no\".")
     win_condition = True
     for question_number in range(total_questions):
