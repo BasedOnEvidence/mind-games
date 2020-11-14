@@ -3,6 +3,7 @@ import brain_games.cli as cli
 import brain_games.games.brain_even as brain_even
 import brain_games.games.brain_calc as brain_calc
 import brain_games.games.brain_gcd as brain_gcd
+import brain_games.games.brain_progression as brain_progression
 import sys
 
 
@@ -21,10 +22,14 @@ def main():
     elif current_game == "--gcd":
         name = cli.welcome_user()
         brain_gcd.gcd_game(name)
+    elif current_game == "--progression":
+        name = cli.welcome_user()
+        brain_progression.progression_game(name)
     elif current_game == "--help":
         print("Here are all the arguments: ")
         print("--even - play even game")
         print("--calc - play calc game")
+        print("--progression - play progression game")
         print("--help - show this instructions")
     else:
         print("Type --help to find out what games you can play")
