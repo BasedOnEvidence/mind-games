@@ -8,6 +8,13 @@ def num_generator(start_num=0, end_num=100):
     return result
 
 
+def odd_num_generator(start_num=0, end_num=100):
+    result = num_generator(start_num, end_num)
+    if result % 2 == 0:
+        result = result + 1
+    return result
+
+
 def operation_generator(operations_list):
     random.seed(datetime.datetime.now())
     operation = operations_list[random.randint(0, len(operations_list)-1)]
@@ -21,6 +28,13 @@ def find_gcd(arg1, arg2):
         else:
             arg2 = arg2 % arg1
     return arg1 + arg2
+
+
+def is_prime(num):
+    divider = 2
+    while num % divider != 0:
+        divider = divider + 1
+    return divider == num
 
 
 def calculate(arg1, arg2, operation):
