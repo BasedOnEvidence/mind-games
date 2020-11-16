@@ -6,7 +6,7 @@ from brain_games.games import (
     brain_calc,
     brain_gcd,
     brain_progression,
-    brain_prime
+    brain_prime,
 )
 
 
