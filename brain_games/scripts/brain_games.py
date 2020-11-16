@@ -1,10 +1,7 @@
 #!/usr/bin/env python
-import brain_games.cli as cli
-import brain_games.games.brain_even as brain_even
-import brain_games.games.brain_calc as brain_calc
-import brain_games.games.brain_gcd as brain_gcd
-import brain_games.games.brain_progression as brain_progression
-import brain_games.games.brain_prime as brain_prime
+from brain_games import cli
+from brain_games.games import brain_even, brain_calc, \
+    brain_gcd, brain_progression, brain_prime
 import sys
 
 

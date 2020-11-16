@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import brain_games.cli as cli
-import brain_games.calc_functions as calc_functions
+from brain_games import cli
+from brain_games import calc_functions
 import prompt
 
 
