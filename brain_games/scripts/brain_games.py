@@ -5,10 +5,7 @@ from brain_games.games import brain_even, brain_calc, \
 import sys
 
 
-def main():
-    current_game = ""
-    if len(sys.argv) > 1:
-        current_game = sys.argv[1]
+def game_selection(current_game):
     print("Welcome to the Brain Games!")
     if current_game == "--even":
         name = cli.welcome_user()
@@ -34,6 +31,13 @@ def main():
         print("--help - show this instructions")
     else:
         print("Type --help to find out what games you can play")
+
+
+def main():
+    current_game = ""
+    if len(sys.argv) > 1:
+        current_game = sys.argv[1]
+    game_selection(current_game)
 
 
 if __name__ == "__main__":
