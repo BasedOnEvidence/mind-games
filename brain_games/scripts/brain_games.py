@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from brain_games import cli
-from brain_games.games import brain_even, brain_calc, \
-    brain_gcd, brain_progression, brain_prime
+from brain_games.games import (brain_even, brain_calc, brain_gcd,
+                               brain_progression, brain_prime)
 import sys
 
 
@@ -22,15 +22,13 @@ def game_selection(current_game):
     elif current_game == "--prime":
         name = cli.welcome_user()
         brain_prime.prime_game(name)
-    elif current_game == "--help":
-        print("Here are all the arguments: ")
+    else:
+        print("Here are all the arguments, choose your game!")
         print("--even - play even game")
         print("--calc - play calc game")
+        print("--gcd - play gcd game")
         print("--progression - play progression game")
         print("--prime - play prime game")
-        print("--help - show this instructions")
-    else:
-        print("Type --help to find out what games you can play")
 
 
 def main():
