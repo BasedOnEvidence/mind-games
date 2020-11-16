@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 import sys
 from brain_games import cli
-from brain_games.games import (
-    brain_even,
-    brain_calc,
-    brain_gcd,
-    brain_progression,
-    brain_prime,
-)
+from brain_games.games import (brain_calc, brain_even, brain_gcd, brain_prime,
+                               brain_progression,)
 
 
 def game_selection(current_game):

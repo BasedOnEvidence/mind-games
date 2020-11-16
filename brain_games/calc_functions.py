@@ -39,11 +39,11 @@ def is_prime(num):
 
 def calculate(arg1, arg2, operation):
     result = 0
-    if operation == '+':
+    if operation == "+":
         result = arg1 + arg2
-    if operation == '-':
+    if operation == "-":
         result = arg1 - arg2
-    if operation == '*':
+    if operation == "*":
         result = arg1 * arg2
     return result
 
