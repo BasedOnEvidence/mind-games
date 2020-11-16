@@ -6,10 +6,9 @@ import sys
 
 
 def main():
+    current_game = ""
     if len(sys.argv) > 1:
         current_game = sys.argv[1]
-    else:
-        current_game = ""
     print("Welcome to the Brain Games!")
     if current_game == "--even":
         name = cli.welcome_user()

@@ -9,10 +9,9 @@ def even_game(name="Alex", total_questions=3):
     for _ in range(total_questions):
         current_number = calc_functions.num_generator(0, 65535)
         print("Question: {}".format(current_number))
+        correct_answer = "no"
         if (current_number % 2 == 0):
             correct_answer = "yes"
-        else:
-            correct_answer = "no"
         player_answer = prompt.string("Your answer: ")
         win_condition = cli.game_answer_check(player_answer, correct_answer)
         if not win_condition:
