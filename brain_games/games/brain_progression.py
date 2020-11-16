@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-from brain_games import calc_functions, cli
 import prompt
+from brain_games import calc_functions, cli
 
 
 def generate_task(progression_len, hide_num, start_num, increment):
-    task_str = str(start_num) + ' '
+    task_str = str(start_num) + " "
     new_elem = start_num
     if hide_num == 0:
         task_str = ".. "
@@ -15,7 +15,7 @@ def generate_task(progression_len, hide_num, start_num, increment):
             task_str = task_str + ".. "
             correct_answer = new_elem
         else:
-            task_str = task_str + str(new_elem) + ' '
+            task_str = task_str + str(new_elem) + " "
     return task_str, correct_answer
 
 
@@ -23,13 +23,12 @@ def progression_game(name="Alex", total_questions=3):
     print("What number is missing in the progression?")
     for _ in range(total_questions):
         progression_len = calc_functions.num_generator(5, 10)
-        hide_num = calc_functions.num_generator(0, progression_len-1)
+        hide_num = calc_functions.num_generator(0, progression_len - 1)
         start_num = calc_functions.num_generator(0, 20)
         increment = calc_functions.num_generator(1, 10)
-        task_str, correct_answer = generate_task(progression_len,
-                                                 hide_num,
-                                                 start_num,
-                                                 increment)
+        task_str, correct_answer = generate_task(
+            progression_len, hide_num, start_num, increment
+        )
         print("Question: {} ".format(task_str))
         player_answer = prompt.string("Your answer: ")
         win_condition = cli.game_answer_check(player_answer, correct_answer)

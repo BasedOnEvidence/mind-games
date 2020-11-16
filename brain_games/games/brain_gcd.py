@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from brain_games import calc_functions, cli
 import prompt
+from brain_games import calc_functions, cli
 
 
 def gcd_game(name="Alex", total_questions=3):

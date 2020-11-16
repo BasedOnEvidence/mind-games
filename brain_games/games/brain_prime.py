@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-from brain_games import calc_functions, cli
 import prompt
+from brain_games import calc_functions, cli
 
 
 def prime_game(name="Alex", total_questions=3):
-    print("Answer \"yes\" if given number is prime. Otherwise answer \"no\".")
+    print('Answer "yes" if given number is prime. Otherwise answer "no".')
     for _ in range(total_questions):
         task_number = calc_functions.odd_num_generator(0, 100)
         correct_answer = "no"

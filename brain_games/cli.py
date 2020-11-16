@@ -19,10 +19,8 @@ def game_answer_check(player_answer, correct_answer):
     if player_answer == str(correct_answer):
         print("Correct!")
     else:
-        error_text = "is wrong answer ;{. Correct answer was "
-        print("\'{}\' {} \'{}\'.".format(player_answer,
-                                         error_text,
-                                         correct_answer))
+        err_msg = "is wrong answer ;{. Correct answer was "
+        print("'{}' {} '{}'.".format(player_answer, err_msg, correct_answer))
         win_condition = False
     return win_condition
 

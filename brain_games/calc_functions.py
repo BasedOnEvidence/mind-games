@@ -17,7 +17,7 @@ def odd_num_generator(start_num=0, end_num=100):
 
 def operation_generator(operations_list):
     random.seed(datetime.datetime.now())
-    operation = operations_list[random.randint(0, len(operations_list)-1)]
+    operation = operations_list[random.randint(0, len(operations_list) - 1)]
     return operation
 
 
