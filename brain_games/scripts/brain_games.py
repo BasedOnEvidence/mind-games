@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import sys
 
-from brain_games import cli
-from brain_games import games
+from brain_games import cli, games
 
 
 def game_selection(current_game):
