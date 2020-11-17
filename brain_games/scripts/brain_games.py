@@ -2,32 +2,26 @@
 import sys
 
 from brain_games import cli
-from brain_games.games import (
-    brain_calc,
-    brain_even,
-    brain_gcd,
-    brain_prime,
-    brain_progression,
-)
+from brain_games import games
 
 
 def game_selection(current_game):
     print("Welcome to the Brain Games!")
     if current_game == "--even":
         name = cli.welcome_user()
-        brain_even.even_game(name)
+        games.brain_even.even_game(name)
     elif current_game == "--calc":
         name = cli.welcome_user()
-        brain_calc.calc_game(name)
+        games.brain_calc.calc_game(name)
     elif current_game == "--gcd":
         name = cli.welcome_user()
-        brain_gcd.gcd_game(name)
+        games.brain_gcd.gcd_game(name)
     elif current_game == "--progression":
         name = cli.welcome_user()
-        brain_progression.progression_game(name)
+        games.brain_progression.progression_game(name)
     elif current_game == "--prime":
         name = cli.welcome_user()
-        brain_prime.prime_game(name)
+        games.brain_prime.prime_game(name)
     else:
         print("Here are all the arguments, choose your game!")
         print("--even - play even game")
