@@ -1,27 +1,37 @@
 #!/usr/bin/env python
-import prompt
-from brain_games import calc_functions, cli
+import datetime
+import random
+
+GAME_WELCOME_STR = "Answer \"yes\" if given number " \
+                   "is prime. Otherwise answer \"no\"."
 
 
-def prime_game(name="Alex", total_questions=3):
-    print('Answer "yes" if given number is prime. Otherwise answer "no".')
-    for _ in range(total_questions):
-        task_number = calc_functions.odd_num_generator(0, 100)
-        correct_answer = "no"
-        if calc_functions.is_prime(task_number):
-            correct_answer = "yes"
-        print("Question: {} ".format(task_number))
-        player_answer = prompt.string("Your answer: ")
-        win_condition = cli.game_answer_check(player_answer, correct_answer)
-        if not win_condition:
-            break
-    cli.game_result(win_condition, name)
+def num_generator(start_num=0, end_num=100):
+    random.seed(datetime.datetime.now())
+    result = random.randint(start_num, end_num)
+    return result
 
 
-def main():
-    name = cli.welcome_user()
-    prime_game(name)
+def odd_num_generator(start_num=0, end_num=100):
+    result = num_generator(start_num, end_num)
+    if result % 2 == 0:
+        result = result + 1
+    return result
 
 
-if __name__ == "__main__":
-    main()
+def is_prime(num):
+    divider = 2
+    while num % divider != 0:
+        divider = divider + 1
+    return divider == num
+
+
+def generate_task():
+    game_data = {}
+    task_number = odd_num_generator(0, 100)
+    correct_answer = "no"
+    if is_prime(task_number):
+        correct_answer = "yes"
+    game_data["game_question"] = task_number
+    game_data["game_answer"] = correct_answer
+    return game_data

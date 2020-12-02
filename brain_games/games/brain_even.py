@@ -1,27 +1,23 @@
 #!/usr/bin/env python
-import prompt
-from brain_games import calc_functions, cli
+import datetime
+import random
+
+GAME_WELCOME_STR = "Answer \"yes\" if the number is even, " \
+                   "otherwise anser \"no\"."
 
 
-def even_game(name="Alex", total_questions=3):
-    print('Answer "yes" if the number is even, otherwise anser "no".')
-    for _ in range(total_questions):
-        current_number = calc_functions.num_generator(0, 65535)
-        print("Question: {}".format(current_number))
-        correct_answer = "no"
-        if current_number % 2 == 0:
-            correct_answer = "yes"
-        player_answer = prompt.string("Your answer: ")
-        win_condition = cli.game_answer_check(player_answer, correct_answer)
-        if not win_condition:
-            break
-    cli.game_result(win_condition, name)
+def num_generator(start_num=0, end_num=100):
+    random.seed(datetime.datetime.now())
+    result = random.randint(start_num, end_num)
+    return result
 
 
-def main():
-    name = cli.welcome_user()
-    even_game(name)
-
-
-if __name__ == "__main__":
-    main()
+def generate_task():
+    game_data = {}
+    current_number = num_generator(0, 65535)
+    correct_answer = "no"
+    if current_number % 2 == 0:
+        correct_answer = "yes"
+    game_data["game_question"] = current_number
+    game_data["game_answer"] = correct_answer
+    return game_data

@@ -1,40 +1,10 @@
 #!/usr/bin/env python
-import sys
-
-from brain_games import cli, games
-
-
-def game_selection(current_game):
-    print("Welcome to the Brain Games!")
-    if current_game == "--even":
-        name = cli.welcome_user()
-        games.brain_even.even_game(name)
-    elif current_game == "--calc":
-        name = cli.welcome_user()
-        games.brain_calc.calc_game(name)
-    elif current_game == "--gcd":
-        name = cli.welcome_user()
-        games.brain_gcd.gcd_game(name)
-    elif current_game == "--progression":
-        name = cli.welcome_user()
-        games.brain_progression.progression_game(name)
-    elif current_game == "--prime":
-        name = cli.welcome_user()
-        games.brain_prime.prime_game(name)
-    else:
-        print("Here are all the arguments, choose your game!")
-        print("--even - play even game")
-        print("--calc - play calc game")
-        print("--gcd - play gcd game")
-        print("--progression - play progression game")
-        print("--prime - play prime game")
+from brain_games import cli
 
 
 def main():
-    current_game = ""
-    if len(sys.argv) > 1:
-        current_game = sys.argv[1]
-    game_selection(current_game)
+    print("Welcome to the Brain Games!")
+    cli.welcome_user()
 
 
 if __name__ == "__main__":

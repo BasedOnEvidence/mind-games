@@ -1,26 +1,31 @@
 #!/usr/bin/env python
-import prompt
-from brain_games import calc_functions, cli
+import datetime
+import random
+
+GAME_WELCOME_STR = "Find the greatest common " \
+                   "divisor of given numbers."
 
 
-def gcd_game(name="Alex", total_questions=3):
-    print("Find the greastest common divisor of given numbers.")
-    for _ in range(total_questions):
-        game_arg1 = calc_functions.num_generator(0, 100)
-        game_arg2 = calc_functions.num_generator(0, 20)
-        correct_answer = calc_functions.find_gcd(game_arg1, game_arg2)
-        print("Question: {} {} = ".format(game_arg1, game_arg2))
-        player_answer = prompt.string("Your answer: ")
-        win_condition = cli.game_answer_check(player_answer, correct_answer)
-        if not win_condition:
-            break
-    cli.game_result(win_condition, name)
+def num_generator(start_num=0, end_num=100):
+    random.seed(datetime.datetime.now())
+    result = random.randint(start_num, end_num)
+    return result
 
 
-def main():
-    name = cli.welcome_user()
-    gcd_game(name)
+def find_gcd(arg1, arg2):
+    while arg1 != 0 and arg2 != 0:
+        if arg1 > arg2:
+            arg1 = arg1 % arg2
+        else:
+            arg2 = arg2 % arg1
+    return arg1 + arg2
 
 
-if __name__ == "__main__":
-    main()
+def generate_task():
+    game_data = {}
+    arg1 = num_generator(0, 100)
+    arg2 = num_generator(0, 20)
+    correct_answer = find_gcd(arg1, arg2)
+    game_data["game_question"] = str(arg1) + " " + str(arg2)
+    game_data["game_answer"] = str(correct_answer)
+    return game_data

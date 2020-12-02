@@ -1,27 +1,40 @@
 #!/usr/bin/env python
-import prompt
-from brain_games import calc_functions, cli
+import datetime
+import random
+
+GAME_WELCOME_STR = "What is the result of the expression?"
 
 
-def calc_game(name="Alex", total_questions=3):
-    print("What is the result of the expression?")
-    for _ in range(total_questions):
-        arg1 = calc_functions.num_generator(0, 100)
-        arg2 = calc_functions.num_generator(0, 20)
-        operation = calc_functions.operation_generator(["+", "-", "*"])
-        correct_answer = calc_functions.calculate(arg1, arg2, operation)
-        print("Question: {} {} {} = ".format(arg1, operation, arg2))
-        player_answer = prompt.string("Your answer: ")
-        win_condition = cli.game_answer_check(player_answer, correct_answer)
-        if not win_condition:
-            break
-    cli.game_result(win_condition, name)
+def operation_generator(operations_list):
+    random.seed(datetime.datetime.now())
+    operation = operations_list[random.randint(0, len(operations_list) - 1)]
+    return operation
 
 
-def main():
-    name = cli.welcome_user()
-    calc_game(name)
+def calculate(arg1, arg2, operation):
+    result = 0
+    if operation == "+":
+        result = arg1 + arg2
+    if operation == "-":
+        result = arg1 - arg2
+    if operation == "*":
+        result = arg1 * arg2
+    return result
 
 
-if __name__ == "__main__":
-    main()
+def num_generator(start_num=0, end_num=100):
+    random.seed(datetime.datetime.now())
+    result = random.randint(start_num, end_num)
+    return result
+
+
+def generate_task():
+    game_data = {}
+    arg1 = num_generator(0, 100)
+    arg2 = num_generator(0, 20)
+    operation = operation_generator(["+", "-", "*"])
+    correct_answer = calculate(arg1, arg2, operation)
+    game_data["game_question"] = str(arg1) + " " + str(operation)
+    game_data["game_question"] += " " + str(arg2)
+    game_data["game_answer"] = str(correct_answer)
+    return game_data
