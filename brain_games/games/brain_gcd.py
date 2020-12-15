@@ -1,15 +1,12 @@
-#!/usr/bin/env python
-import datetime
 import random
 
 GAME_WELCOME_STR = "Find the greatest common " \
                    "divisor of given numbers."
 
-
-def num_generator(start_num=0, end_num=100):
-    random.seed(datetime.datetime.now())
-    result = random.randint(start_num, end_num)
-    return result
+START_NUM_FOR_ARG1 = 0
+END_NUM_FOR_ARG1 = 100
+START_NUM_FOR_ARG2 = 0
+END_NUM_FOR_ARG2 = 20
 
 
 def find_gcd(arg1, arg2):
@@ -22,10 +19,10 @@ def find_gcd(arg1, arg2):
 
 
 def generate_task():
-    game_data = {}
-    arg1 = num_generator(0, 100)
-    arg2 = num_generator(0, 20)
+    arg1 = random.randint(START_NUM_FOR_ARG1, END_NUM_FOR_ARG1)
+    arg2 = random.randint(START_NUM_FOR_ARG2, END_NUM_FOR_ARG2)
     correct_answer = find_gcd(arg1, arg2)
-    game_data["game_question"] = str(arg1) + " " + str(arg2)
-    game_data["game_answer"] = str(correct_answer)
+    game_question = str(arg1) + " " + str(arg2)
+    correct_answer = str(correct_answer)
+    game_data = (game_question, correct_answer)
     return game_data

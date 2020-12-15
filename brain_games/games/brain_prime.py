@@ -1,37 +1,35 @@
-#!/usr/bin/env python
-import datetime
 import random
 
 GAME_WELCOME_STR = "Answer \"yes\" if given number " \
                    "is prime. Otherwise answer \"no\"."
 
+START_NUM = 0
+END_NUM = 100
 
-def num_generator(start_num=0, end_num=100):
-    random.seed(datetime.datetime.now())
+
+def odd_num_generator(start_num, end_num):
     result = random.randint(start_num, end_num)
-    return result
-
-
-def odd_num_generator(start_num=0, end_num=100):
-    result = num_generator(start_num, end_num)
     if result % 2 == 0:
         result = result + 1
     return result
 
 
 def is_prime(num):
-    divider = 2
-    while num % divider != 0:
-        divider = divider + 1
-    return divider == num
+    # 1 - is not prime. %2 check, then start from 3
+    if num % 2 == 0:
+        return False
+    divider = 3
+    # If divider^2 == num - false also
+    while divider * divider <= num and num % divider != 0:
+        divider = divider + 2
+    return divider*divider > num
 
 
 def generate_task():
-    game_data = {}
-    task_number = odd_num_generator(0, 100)
+    task_number = odd_num_generator(START_NUM, END_NUM)
     correct_answer = "no"
     if is_prime(task_number):
         correct_answer = "yes"
-    game_data["game_question"] = task_number
-    game_data["game_answer"] = correct_answer
+    game_question = str(task_number)
+    game_data = (game_question, correct_answer)
     return game_data

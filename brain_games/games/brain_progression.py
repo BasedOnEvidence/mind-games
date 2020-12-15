@@ -1,41 +1,28 @@
-import datetime
 import random
 
 GAME_WELCOME_STR = "What number is missing " \
                    "in the progression?"
 
-
-def num_generator(start_num=0, end_num=100):
-    random.seed(datetime.datetime.now())
-    result = random.randint(start_num, end_num)
-    return result
-
-
-def generate_data(progression_len, hide_num, start_num, increment):
-    task_str = str(start_num) + " "
-    new_elem = start_num
-    if hide_num == 0:
-        task_str = ".. "
-        correct_answer = start_num
-    for elem_num in range(1, progression_len):
-        new_elem = new_elem + increment
-        if hide_num == elem_num:
-            task_str = task_str + ".. "
-            correct_answer = new_elem
-        else:
-            task_str = task_str + str(new_elem) + " "
-    return task_str, correct_answer
+START_MIN = 0
+START_MAX = 20
+INC_MIN = 1
+INC_MAX = 10
+PROGRESSION_LEN_MIN = 5
+PROGRESSION_LEN_MAX = 10
 
 
 def generate_task():
-    game_data = {}
-    progression_len = num_generator(5, 10)
-    hide_num = num_generator(0, progression_len - 1)
-    start_num = num_generator(0, 20)
-    increment = num_generator(1, 10)
-    task_str, correct_answer = generate_data(
-        progression_len, hide_num, start_num, increment
-    )
-    game_data["game_question"] = task_str
-    game_data["game_answer"] = str(correct_answer)
+    progression_len = random.randint(PROGRESSION_LEN_MIN, PROGRESSION_LEN_MAX)
+    hidden_index = random.randint(0, progression_len - 1)
+    start_num = random.randint(START_MIN, START_MAX)
+    increment = random.randint(INC_MIN, INC_MAX)
+    progression = []
+    for i in range(progression_len):
+        progression.append(start_num + i*increment)
+    correct_answer = str(progression[hidden_index])
+    progression[hidden_index] = ".."
+    game_question = ""
+    for i in range(progression_len):
+        game_question = game_question + str(progression[i]) + " "
+    game_data = (game_question, correct_answer)
     return game_data
