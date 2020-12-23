@@ -1,6 +1,6 @@
 import random
 
-GAME_WELCOME_STR = "What number is missing " \
+GAME_DESCRIPTION = "What number is missing " \
                    "in the progression?"
 
 START_MIN = 0
@@ -16,13 +16,11 @@ def generate_task():
     hidden_index = random.randint(0, progression_len - 1)
     start_num = random.randint(START_MIN, START_MAX)
     increment = random.randint(INC_MIN, INC_MAX)
-    progression = []
-    for i in range(progression_len):
-        progression.append(start_num + i*increment)
-    correct_answer = str(progression[hidden_index])
+    progression = [
+        str(start_num + i*increment)
+        for i in range(progression_len)
+    ]
+    correct_answer = progression[hidden_index]
     progression[hidden_index] = ".."
-    game_question = ""
-    for i in range(progression_len):
-        game_question = game_question + str(progression[i]) + " "
-    game_data = (game_question, correct_answer)
-    return game_data
+    game_question = " ".join(progression)
+    return game_question, correct_answer

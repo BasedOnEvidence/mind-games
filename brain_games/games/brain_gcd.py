@@ -1,12 +1,10 @@
 import random
 
-GAME_WELCOME_STR = "Find the greatest common " \
+GAME_DESCRIPTION = "Find the greatest common " \
                    "divisor of given numbers."
 
-START_NUM_FOR_ARG1 = 0
-END_NUM_FOR_ARG1 = 100
-START_NUM_FOR_ARG2 = 0
-END_NUM_FOR_ARG2 = 20
+START_NUM = 0
+END_NUM = 100
 
 
 def find_gcd(arg1, arg2):
@@ -19,10 +17,9 @@ def find_gcd(arg1, arg2):
 
 
 def generate_task():
-    arg1 = random.randint(START_NUM_FOR_ARG1, END_NUM_FOR_ARG1)
-    arg2 = random.randint(START_NUM_FOR_ARG2, END_NUM_FOR_ARG2)
+    arg1 = random.randint(START_NUM, END_NUM)
+    arg2 = random.randint(START_NUM, END_NUM)
     correct_answer = find_gcd(arg1, arg2)
-    game_question = str(arg1) + " " + str(arg2)
+    game_question = "{} {}".format(arg1, arg2)
     correct_answer = str(correct_answer)
-    game_data = (game_question, correct_answer)
-    return game_data
+    return game_question, correct_answer
