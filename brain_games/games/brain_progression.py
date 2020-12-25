@@ -17,7 +17,7 @@ def generate_task():
     start_num = random.randint(START_MIN, START_MAX)
     increment = random.randint(INC_MIN, INC_MAX)
     progression = [
-        str(start_num + i*increment)
+        str(start_num + i * increment)
         for i in range(progression_len)
     ]
     correct_answer = progression[hidden_index]
