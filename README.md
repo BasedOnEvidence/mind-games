@@ -5,7 +5,7 @@
 Run to install: pip install --user -i https://test.pypi.org/simple/ mrhex-brain-games --extra-index-url https://pypi.org/simple/ prompt
 </p>
 <p>
-<a href="https://asciinema.org/a/zhlMgXbO8wPIQ4bxjijUs6SIm">How to install package</a><br />
+<a href="https://asciinema.org/a/BWuFhB156dh431xUk4LC5milq">How to install package</a><br />
 <a href="https://asciinema.org/a/bq9W5yUgb7hBWyCcaiMSDQmYc">How to play even game</a><br />
 <a href="https://asciinema.org/a/UpxQwQokwaJjmLbxhGwI4Sdhl">How to play calc game</a><br />
 <a href="https://asciinema.org/a/0hLEg7FyddTXgepqrPKctsG0j">How to play gcd game</a><br />
