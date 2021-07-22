@@ -1,4 +1,4 @@
-# python-project-lvl1
+# mind-games
 <a href="https://codeclimate.com/github/BasedOnEvidence/python-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 [![Github Actions Status](https://github.com/BasedOnEvidence/python-project-lvl1/workflows/PyCI/badge.svg)](https://github.com/BasedOnEvidence/python-project-lvl1/actions)
 <br />
